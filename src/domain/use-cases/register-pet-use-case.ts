@@ -10,6 +10,7 @@ export class RegisterPetUseCase {
       ...data,
       id: randomUUID(),
     })
+
     return pet
   }
 }
