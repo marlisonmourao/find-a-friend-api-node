@@ -1,15 +1,16 @@
-type Age = 'puppy' | 'adult' | 'senior'
-type Size = 'small' | 'medium' | 'large'
-type IndependenceLevel = 'low' | 'medium' | 'high'
+type AGE = 'Puppy' | 'ADULT' | 'SENIOR'
+type SIZE = 'SMALL' | 'MEDIUM' | 'LARGE'
+type INDEPENDENCE_lEVEL = 'LOW' | 'MEDIUM' | 'HIGH'
+type PET_TYPE = 'CAT' | 'DOG' | 'OTHER'
 
 export interface Pet {
   id: string
   name: string
-  age?: Age | null
+  age?: AGE | null
   energyLevel: number
-  size?: Size | null
-  independenceLevel: IndependenceLevel
-  type: 'cat' | 'dog' | 'other'
+  size?: SIZE | null
+  independenceLevel: INDEPENDENCE_lEVEL
+  type: PET_TYPE
   orgId: string
   city: string
   available: boolean
