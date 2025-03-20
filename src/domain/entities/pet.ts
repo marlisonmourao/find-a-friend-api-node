@@ -6,9 +6,9 @@ type PET_TYPE = 'CAT' | 'DOG' | 'OTHER'
 export interface Pet {
   id: string
   name: string
-  age: AGE | null
+  age?: AGE | null
   energyLevel: number
-  size: SIZE | null
+  size: SIZE
   independenceLevel: INDEPENDENCE_lEVEL
   type: PET_TYPE
   organizationId: string
@@ -16,5 +16,5 @@ export interface Pet {
   available: boolean
   description: string | null
   createdAt: Date
-  updatedAt: Date | null
+  updatedAt?: Date | null
 }

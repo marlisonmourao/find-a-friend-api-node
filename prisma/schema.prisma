@@ -50,7 +50,7 @@ model Pet {
   name              String
   age               AGE?               @default(PUPPY)
   energyLevel       Int
-  size              SIZE?              @default(SMALL)
+  size              SIZE               @default(SMALL)
   independenceLevel INDEPENDENCE_LEVEL
   type              PET_TYPE
 
