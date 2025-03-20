@@ -1,5 +1,6 @@
 import { InMemoryOrganizationRepository } from '../repositories/in-memory/in-memory-organization-repository'
 import { CreateOrganizationUseCase } from './create-organization-use-case'
+import { ResourceAlreadyExistsError } from './errors/resource-already-exists-error'
 
 let inMemoryOrganizationRepository: InMemoryOrganizationRepository
 let sut: CreateOrganizationUseCase
@@ -25,5 +26,25 @@ describe('Create organization use case', () => {
         name: 'any_name',
       })
     )
+  })
+
+  it('should not be able to create an organization with the same email', async () => {
+    await sut.execute({
+      name: 'any_name',
+      description: 'any_description',
+      email: 'any_email',
+      password: 'any_password',
+      createdAt: new Date(),
+    })
+
+    await expect(
+      sut.execute({
+        name: 'any_name',
+        description: 'any_description',
+        email: 'any_email',
+        password: 'any_password',
+        createdAt: new Date(),
+      })
+    ).rejects.toThrow(ResourceAlreadyExistsError)
   })
 })
