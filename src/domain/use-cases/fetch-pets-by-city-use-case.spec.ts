@@ -9,32 +9,33 @@ beforeEach(() => {
   sut = new FetchPetsByCityUseCase(inMemoryPetRepository)
 })
 
-describe('Fetch Pets By City Use Case', () => {
+describe('Fetch Pets By City Use Case', async () => {
   it('should be able to fetch pets by city', async () => {
     await inMemoryPetRepository.create({
       id: 'pet-1',
       name: 'Pet 1',
-      age: 'adult',
+      age: 'ADULT',
       city: 'City 1',
       description: 'Description 1',
-      type: 'dog',
+      type: 'DOG',
       available: true,
       energyLevel: 1,
-      orgId: 'org-1',
-      independenceLevel: 'high',
+      organizationId: 'org-1',
+      independenceLevel: 'HIGH',
+      size: 'MEDIUM',
     })
-
     await inMemoryPetRepository.create({
       id: 'pet-2',
       name: 'Pet 2',
-      age: 'puppy',
+      age: 'PUPPY',
       city: 'City 2',
       description: 'Description 2',
-      type: 'cat',
+      type: 'CAT',
       available: true,
       energyLevel: 1,
-      orgId: 'org-1',
-      independenceLevel: 'high',
+      organizationId: 'org-1',
+      independenceLevel: 'HIGH',
+      size: 'SMALL',
     })
 
     const { pets } = await sut.execute({ city: 'City 1' })
