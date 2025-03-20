@@ -1,4 +1,5 @@
 import { InMemoryPetsRepository } from '../repositories/in-memory/in-memory-pets-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 import { GetPetByIdUseCase } from './get-pet-by-id-use-case'
 
 let inMemoryPetRepository: InMemoryPetsRepository
@@ -31,5 +32,13 @@ describe('Get pet by id use case', () => {
 
     expect(pet.id).toEqual('pet-1')
     expect(pet.name).toEqual('Dog')
+  })
+
+  it('should not be able to get pet by id if pet does not exist', async () => {
+    await expect(() =>
+      sut.execute({
+        id: 'pet-2',
+      })
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

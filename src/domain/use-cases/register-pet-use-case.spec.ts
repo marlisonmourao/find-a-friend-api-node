@@ -26,7 +26,7 @@ describe('Register pet use case', () => {
     })
 
     expect(inMemoryPetRepository.items).toHaveLength(1)
-    expect(result).toEqual(
+    expect(result.pet).toEqual(
       expect.objectContaining({
         id: expect.any(String),
       })

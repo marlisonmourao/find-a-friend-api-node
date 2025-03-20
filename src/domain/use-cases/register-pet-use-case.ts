@@ -2,15 +2,23 @@ import { randomUUID } from 'node:crypto'
 import type { Pet } from '../entities/pet'
 import type { PetsRepository } from '../repositories/pets-repository'
 
+interface RegisterPetUseCaseRequest extends Omit<Pet, 'id'> {}
+
+interface RegisterPetUseCaseResponse {
+  pet: Pet
+}
+
 export class RegisterPetUseCase {
   constructor(private petRepository: PetsRepository) {}
 
-  async execute(data: Omit<Pet, 'id'>): Promise<Pet> {
+  async execute(
+    data: RegisterPetUseCaseRequest
+  ): Promise<RegisterPetUseCaseResponse> {
     const pet = await this.petRepository.create({
       ...data,
       id: randomUUID(),
     })
 
-    return pet
+    return { pet }
   }
 }
