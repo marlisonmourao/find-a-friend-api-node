@@ -4,5 +4,5 @@ export interface Organization {
   email: string
   description: string
   password: string
-  createdAt: Date
+  createdAt?: Date
 }
