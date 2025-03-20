@@ -8,9 +8,9 @@ datasource db {
 }
 
 enum AGE {
-  puppy
-  adult
-  senior
+  PUPPY
+  ADULT
+  SENIOR
 }
 
 enum SIZE {
@@ -48,7 +48,7 @@ model Organization {
 model Pet {
   id                String             @id @default(uuid())
   name              String
-  age               AGE?               @default(puppy)
+  age               AGE?               @default(PUPPY)
   energyLevel       Int
   size              SIZE?              @default(SMALL)
   independenceLevel INDEPENDENCE_LEVEL
