@@ -7,7 +7,6 @@ export class InMemoryPetsRepository implements PetsRepository {
   async create(data: Omit<Pet, 'createdAt'>) {
     const pet = {
       ...data,
-      id: data.id ?? crypto.randomUUID(),
       createdAt: new Date(),
     }
 
