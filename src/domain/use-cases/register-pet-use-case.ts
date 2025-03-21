@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto'
 import type { Pet } from '../entities/pet'
 import type { PetsRepository } from '../repositories/pets-repository'
 
-interface RegisterPetUseCaseRequest extends Omit<Pet, 'id'> {}
+interface RegisterPetUseCaseRequest extends Omit<Pet, 'id' | 'createdAt'> {}
 
 interface RegisterPetUseCaseResponse {
   pet: Pet
@@ -17,6 +17,7 @@ export class RegisterPetUseCase {
     const pet = await this.petRepository.create({
       ...data,
       id: randomUUID(),
+      createdAt: new Date(),
     })
 
     return { pet }
