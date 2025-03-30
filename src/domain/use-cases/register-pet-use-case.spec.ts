@@ -13,16 +13,15 @@ describe('Register pet use case', () => {
   it('should be able to register a new pet', async () => {
     const result = await sut.execute({
       name: 'Dog',
-      age: 'adult',
+      age: 'ADULT',
       available: true,
       energyLevel: 2,
       city: 'São Paulo',
-      independenceLevel: 'low',
-      orgId: 'org-1',
-      size: 'medium',
-      type: 'dog',
+      independenceLevel: 'LOW',
+      size: 'MEDIUM',
+      type: 'DOG',
       description: 'Dog description',
-      createdAt: new Date(),
+      organizationId: 'org-1',
     })
 
     expect(inMemoryPetRepository.items).toHaveLength(1)
