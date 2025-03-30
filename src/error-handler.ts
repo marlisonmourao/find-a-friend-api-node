@@ -6,11 +6,17 @@ import { ResourceNotFoundError } from './domain/use-cases/errors/resource-not-fo
 
 type FastifyErrorHandler = FastifyInstance['errorHandler']
 
-export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
+export const errorHandler: FastifyErrorHandler = (error, _, reply) => {
   if (error instanceof ZodError) {
     return reply
       .status(400)
       .send({ message: 'Validation error', error: error.flatten().fieldErrors })
+  }
+
+  if (error.code === 'FST_ERR_VALIDATION') {
+    return reply
+      .status(400)
+      .send({ message: 'Validation error', error: error.validation })
   }
 
   if (error instanceof CredentialsError) {

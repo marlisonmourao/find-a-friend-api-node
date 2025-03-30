@@ -8,7 +8,7 @@
     "test:watch": "vitest",
     "build": "tsup src out-dir build",
     "test:e2e": "vitest run --config vitest.config.e2e.mts",
-    "teste:e2e:watch": "vitest --config vitest.config.e2e.mts"
+    "test:e2e:watch": "vitest --config vitest.config.e2e.mts"
   },
   "keywords": [],
   "author": "",
